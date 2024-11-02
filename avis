@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Avis pour Gros Bao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #357ae8;
+        }
+    </style>
+    <script>
+        function choisirPhrase() {
+            const phrases = [
+                "Gros Bao est un restaurant exceptionnel ! Merci Adem pour le service impeccable.",
+                "Une expérience culinaire fantastique chez Gros Bao. Merci Adem !",
+                "Excellente cuisine et ambiance agréable. Merci Adem pour votre accueil.",
+                "Je recommande vivement Gros Bao à Paris. Un grand merci à Adem !"
+            ];
+            const phraseChoisie = phrases[Math.floor(Math.random() * phrases.length)];
+            document.getElementById('message').innerText = phraseChoisie;
+        }
+
+        function copierTexte() {
+            const texte = document.getElementById('message').innerText;
+            navigator.clipboard.writeText(texte).then(function() {
+                alert('Phrase copiée ! Vous pouvez la coller dans votre avis Google.');
+            }, function(err) {
+                alert('Échec de la copie : ', err);
+            });
+        }
+    </script>
+</head>
+<body onload="choisirPhrase()">
+    <h2>Merci de votre visite chez Gros Bao !</h2>
+    <p class="message" id="message"></p>
+    <button class="button" onclick="copierTexte()">Copier la Phrase</button>
+    <br><br>
+    <a href="https://www.google.com/search?q=avis+sur+gros+bao+paris" target="_blank" class="button">Ajouter un Avis sur Google</a>
+</body>
+</html>
